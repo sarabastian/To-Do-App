@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  reminder: 2021-05-02 18:27:57
+  day_id: 1
+
+two:
+  description: MyString
+  reminder: 2021-05-02 18:27:57
+  day_id: 1

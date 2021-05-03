@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+User.destroy_all
+Task.destroy_all
+Day.destroy_all
+
+u1 = User.create(name: 'Sara')
+
+d1 = Day.create(date: '2021/05/05')
+
+t1 = Task.create(description: 'Email about NPI Excellence', reminder: '2021/05/05', day_id: d1.id, user_id: u1.id)
+
+
