@@ -1,21 +1,21 @@
 import React, { useEffect } from "react";
 import "../App.css";
 import { API_URL } from "../apiConstants";
-import Task from "./Task";
+import Day from "./Day";
 const Main = () => {
-  const [tasks, setTasks] = React.useState([]);
+  const [days, setDays] = React.useState([]);
 
   useEffect(() => {
-    fetch(API_URL + "/tasks")
+    fetch(API_URL + "/days")
       .then((r) => r.json())
-      .then((tasks) => setTasks(tasks));
+      .then((days) => setDays(days));
   }, []);
-  console.log(tasks);
+
   return (
     <>
       <main>
-        {tasks.map((t) => (
-          <Task key={t.id} task={t} />
+        {days.map((d) => (
+          <Day key={d.id} day={d} />
         ))}
       </main>
     </>

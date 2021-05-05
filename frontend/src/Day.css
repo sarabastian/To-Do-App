@@ -1,17 +1,14 @@
-.wrapper {
-  display: grid;
-
-  grid-template-rows: 50px 50px;
-  grid-gap: 10px;
-  text-align: center;
+.box {
+  width: 50%;
+  height: 50%;
+  padding: 40px;
+  border: 5px solid black;
+  background-color: lightblue;
+  margin: 4em auto 2em;
+  display: inline-block;
 }
 
-/* .box1 {
-  top: 30px;
-  right: 30px;
-} */
-
-.btn {
+.add-btn {
   background-color: transparent; /* Blue background */
   border: none; /* Remove borders */
   color: white; /* White text */
@@ -20,7 +17,7 @@
   cursor: pointer; /* Mouse pointer on hover */
 }
 
-.btn:hover {
-  background-color: red;
+.add-btn:hover {
+  background-color: royalblue;
   border-radius: 25px;
 }
