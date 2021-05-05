@@ -15,6 +15,8 @@ u1 = User.create(name: 'Sara')
 
 d1 = Day.create(date: '2021/05/05')
 
-t1 = Task.create(description: 'Email about NPI Excellence', reminder: '2021/05/05', day_id: d1.id, user_id: u1.id)
+t1 = Task.create(description: 'Write Weekly Blog', reminder: '2021/05/10 12:00:00', day_id: d1.id, user_id: u1.id)
+t2 = Task.create(description: 'Pay Car Insurance', reminder: '2021/05/15 08:00:00', day_id: d1.id, user_id: u1.id)
+t3 = Task.create(description: "Buy Mother's Day Gift", reminder: '2021/05/09 08:00:00', day_id: d1.id, user_id: u1.id)
 
 
