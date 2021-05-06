@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "../App.css";
 import { API_URL } from "../apiConstants";
 import Day from "./Day";
+
 const Main = () => {
   const [days, setDays] = React.useState([]);
 
@@ -12,13 +13,11 @@ const Main = () => {
   }, []);
 
   return (
-    <>
-      <main>
-        {days.map((d) => (
-          <Day key={d.id} day={d} />
-        ))}
-      </main>
-    </>
+    <main>
+      {days.map((d) => (
+        <Day key={d.id} day={d} />
+      ))}
+    </main>
   );
 };
 
