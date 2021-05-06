@@ -1,13 +1,13 @@
 import React from "react";
 import "../Task.css";
-const Task = ({ task }) => {
+const Task = ({ task, deleteTask, deleted }) => {
   //   return <h1>{task.description}</h1>;
 
-  return (
+  return deleted ? null : (
     <div className="wrapper">
       <div className="box1">
         {task.description}
-        <button className="btn">
+        <button onClick={deleteTask} className="btn">
           <i class="fa fa-check"></i>
         </button>
       </div>
