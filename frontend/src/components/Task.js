@@ -1,13 +1,20 @@
 import React from "react";
 import "../Task.css";
-const Task = ({ task, deleteTask, deleted }) => {
-  //   return <h1>{task.description}</h1>;
+import deleteTask from "../redux/actions/deleteTask";
+import { useSelector, useDispatch } from "react-redux";
 
+const Task = ({ task, deleted, key }) => {
+  const dispatch = useDispatch();
+
+  const deleteT = () => {
+    dispatch(deleteTask(task.id));
+  };
+  console.log(task.id);
   return deleted ? null : (
     <div className="wrapper">
       <div className="box1">
         {task.description}
-        <button onClick={deleteTask} className="btn">
+        <button onClick={deleteT} className="btn">
           <i class="fa fa-check"></i>
         </button>
       </div>

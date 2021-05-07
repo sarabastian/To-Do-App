@@ -3,6 +3,7 @@ import {
   FETCH_TASKS_SUCCESS,
   FETCH_TASKS_FAILURE,
   ADD_TASK,
+  DELETE_TASK,
 } from "../actions/actionConstants";
 
 const initialState = {
@@ -19,12 +20,15 @@ const tasksReducer = (state = initialState, action) => {
     case FETCH_TASKS_FAILURE:
       return { ...state, isLoading: false, error: action.payload };
     case ADD_TASK:
-      console.log(action.payload);
       return {
         ...state,
         tasks: [...state.tasks, action.payload],
         isLoading: false,
       };
+    case DELETE_TASK:
+      const tasks = state.tasks.filter((t) => t.id !== action.payload);
+      return { tasks };
+
     default:
       return state;
   }

@@ -8,7 +8,6 @@ import addTask from "../redux/actions/addTask";
 
 const Day = ({ day }) => {
   const date = day.date.split("-").reverse().join("-");
-  // const [tasks, setAllTasks] = React.useState([]);
   const [open, setOpen] = React.useState(false);
   const openModal = () => {
     setOpen(!open);
@@ -29,13 +28,10 @@ const Day = ({ day }) => {
   const add = (e) => {
     dispatch(addTask(e, description, reminder, day));
   };
-  // const deleteTask = (id) => {
-  //   fetch(API_URL + `/tasks/${id}`, {
-  //     method: "DELETE",
-  //   });
-  //   setAllTasks(tasks.filter((t) => t.id !== id));
-  // };
 
+  // const deleteTask = (id) => {
+  //  ;
+  // };
   const handleInput = (e) => {
     setDescription(e.target.value);
   };
@@ -48,11 +44,7 @@ const Day = ({ day }) => {
     <div className="box">
       <h1>To Do on {date}</h1>
       {allTasks.map((t) => (
-        <Task
-          key={t.id}
-          task={t}
-          // deleteTask={() => deleteTask(t.id)}
-        />
+        <Task key={t.id} task={t} />
       ))}
       <button onClick={openModal} className="add-btn">
         {" "}
