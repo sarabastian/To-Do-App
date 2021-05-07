@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "../Day.css";
 import Task from "./Task";
-import { API_URL } from "../apiConstants";
 import getTasks from "../redux/actions/getTasks";
 import { useSelector, useDispatch } from "react-redux";
 import addTask from "../redux/actions/addTask";
