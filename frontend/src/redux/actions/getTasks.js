@@ -1,23 +1,19 @@
+import React from "react";
 import {
   FETCH_TASKS,
   FETCH_TASKS_SUCCESS,
   FETCH_TASKS_FAILURE,
 } from "./actionConstants";
-import { API_URL } from "../../apiConstants";
 
-const getTasks = () => {
-  return (dispatch) => {
-    dispatch({ type: FETCH_TASKS });
+const getTasks = () => (dispatch) => {
 
-    fetch(API_URL + "/tasks")
-      .then((r) => r.json())
-      .then((tasks) => {
-        return dispatch({ type: FETCH_TASKS_SUCCESS, payload: tasks });
-      })
-      .catch((err) => {
-        return dispatch({ type: FETCH_TASKS_FAILURE, payload: err });
-      });
-  };
-};
+    dispatch({ type: FETCH_TASKS }) => {
 
-export default getTasks;
+
+    }
+    return(
+
+    )
+}
+
+export default getTasks

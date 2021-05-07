@@ -3,19 +3,14 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createStore, applyMiddleware } from "redux";
-// Thunk: allows us to return functions from actions instead of plain old objects
+import { createStore } from "redux";
 import { Provider } from "react-redux";
-import rootReducer from "./redux/reducers/rootReducer";
-import thunk from "redux-thunk";
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+// const store = createStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

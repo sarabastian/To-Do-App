@@ -1,25 +1,24 @@
 import React, { useEffect } from "react";
 import "../App.css";
+import { API_URL } from "../apiConstants";
 import Day from "./Day";
-import { useSelector, useDispatch } from "react-redux";
-import getDays from "../redux/actions/getDays";
-
 const Main = () => {
-  const days = useSelector((state) => {
-    return state.daysReducer.days;
-  });
+  const [days, setDays] = React.useState([]);
 
-  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getDays());
-  }, [dispatch]);
+    fetch(API_URL + "/days")
+      .then((r) => r.json())
+      .then((days) => setDays(days));
+  }, []);
 
   return (
-    <main>
-      {days.map((d) => (
-        <Day key={d.id} day={d} />
-      ))}
-    </main>
+    <>
+      <main>
+        {days.map((d) => (
+          <Day key={d.id} day={d} />
+        ))}
+      </main>
+    </>
   );
 };
 

@@ -27,9 +27,9 @@ class Api::V1::TasksController < ApplicationController
       end
       
     def destroy
-        @task = Task.find(params[:id])
-        @task.delete
-     
+        task = Task.find(params[:id])
+        task.delete
+
     end
       private
     
