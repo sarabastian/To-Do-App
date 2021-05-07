@@ -1,9 +1,9 @@
 import React from "react";
 import "../Task.css";
 import deleteTask from "../redux/actions/deleteTask";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
-const Task = ({ task, deleted, key }) => {
+const Task = ({ task, deleted }) => {
   const dispatch = useDispatch();
 
   const deleteT = () => {
