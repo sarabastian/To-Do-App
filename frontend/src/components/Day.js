@@ -9,6 +9,9 @@ import addTask from "../redux/actions/addTask";
 const Day = ({ day }) => {
   const date = day.date.split("-").reverse().join("-");
   const [open, setOpen] = React.useState(false);
+  const [description, setDescription] = React.useState("");
+  const [reminder, setReminder] = React.useState("");
+
   const openModal = () => {
     setOpen(!open);
   };
@@ -21,9 +24,6 @@ const Day = ({ day }) => {
   useEffect(() => {
     dispatch(getTasks());
   }, []);
-
-  const [description, setDescription] = React.useState("");
-  const [reminder, setReminder] = React.useState("");
 
   const add = (e) => {
     dispatch(addTask(e, description, reminder, day));
@@ -56,7 +56,6 @@ const Day = ({ day }) => {
 
             <form onSubmit={add}>
               <label for="description"></label>
-              {/* <br></br> <br></br> */}
               <input
                 onChange={handleInput}
                 type="text"
@@ -73,8 +72,6 @@ const Day = ({ day }) => {
                 type="date"
                 id="start"
                 defaultValue=""
-                // min={today}
-                // max="2025-01-01"
               ></input>
               <br></br>
               <br></br>
