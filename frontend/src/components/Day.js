@@ -29,9 +29,6 @@ const Day = ({ day }) => {
     dispatch(addTask(e, description, reminder, day));
   };
 
-  // const deleteTask = (id) => {
-  //  ;
-  // };
   const handleInput = (e) => {
     setDescription(e.target.value);
   };
