@@ -2,54 +2,39 @@ import React, { useEffect } from "react";
 import "../Day.css";
 import Task from "./Task";
 import { API_URL } from "../apiConstants";
+import getTasks from "../redux/actions/getTasks";
+import { useSelector, useDispatch } from "react-redux";
+import addTask from "../redux/actions/addTask";
 
 const Day = ({ day }) => {
-  // var dt = new Date();
-
-  // const today = dt.getMonth() + 1 + "/" + dt.getDate() + "/" + dt.getFullYear();
-
   const date = day.date.split("-").reverse().join("-");
-  const [allTasks, setAllTasks] = React.useState([]);
+  // const [tasks, setAllTasks] = React.useState([]);
   const [open, setOpen] = React.useState(false);
   const openModal = () => {
     setOpen(!open);
   };
 
+  const allTasks = useSelector((state) => {
+    return state.tasksReducer.tasks;
+  });
+
+  const dispatch = useDispatch();
   useEffect(() => {
-    fetch(API_URL + "/tasks")
-      .then((r) => r.json())
-      .then((tasks) => setAllTasks(tasks));
+    dispatch(getTasks());
   }, []);
-  console.log(allTasks);
+
   const [description, setDescription] = React.useState("");
   const [reminder, setReminder] = React.useState("");
 
-  const addTask = (e) => {
-    e.preventDefault();
-
-    fetch(API_URL + "/tasks", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        description: description,
-        reminder: reminder,
-        day_id: day.id,
-        user_id: day.tasks[0].user_id,
-      }),
-    })
-      .then((r) => r.json())
-      .then((task) => setAllTasks([...allTasks, task]));
+  const add = (e) => {
+    dispatch(addTask(e, description, reminder, day));
   };
-
-  const deleteTask = (id) => {
-    fetch(API_URL + `/tasks/${id}`, {
-      method: "DELETE",
-    });
-    setAllTasks(allTasks.filter((t) => t.id !== id));
-  };
+  // const deleteTask = (id) => {
+  //   fetch(API_URL + `/tasks/${id}`, {
+  //     method: "DELETE",
+  //   });
+  //   setAllTasks(tasks.filter((t) => t.id !== id));
+  // };
 
   const handleInput = (e) => {
     setDescription(e.target.value);
@@ -63,7 +48,11 @@ const Day = ({ day }) => {
     <div className="box">
       <h1>To Do on {date}</h1>
       {allTasks.map((t) => (
-        <Task key={t.id} task={t} deleteTask={() => deleteTask(t.id)} />
+        <Task
+          key={t.id}
+          task={t}
+          // deleteTask={() => deleteTask(t.id)}
+        />
       ))}
       <button onClick={openModal} className="add-btn">
         {" "}
@@ -76,7 +65,7 @@ const Day = ({ day }) => {
               &times;
             </button>
 
-            <form onSubmit={addTask}>
+            <form onSubmit={add}>
               <label for="description"></label>
               {/* <br></br> <br></br> */}
               <input
