@@ -1,6 +1,7 @@
 export const FETCH_DAYS = "FETCH_DAYS";
 export const FETCH_DAYS_SUCCESS = "FETCH_DAYS_SUCCESS";
 export const FETCH_DAYS_FAILURE = "FETCH_DAYS_FAILURE";
+export const ADD_DAY = "ADD_DAY";
 
 export const FETCH_TASKS = "FETCH_TASKS";
 export const FETCH_TASKS_SUCCESS = "FETCH_TASKS_SUCCESS";

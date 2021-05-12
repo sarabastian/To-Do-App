@@ -25,6 +25,8 @@ const daysReducer = (state = initialState, action) => {
     case FETCH_DAYS_FAILURE:
       return { ...state, isLoading: false, error: action.payload };
 
+    case ADD_DAY:
+      return { ...state, days: [...days, action.payload] };
     default:
       return state;
   }
