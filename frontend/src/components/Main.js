@@ -4,22 +4,42 @@ import Day from "./Day";
 import { useSelector, useDispatch } from "react-redux";
 import getDays from "../redux/actions/getDays";
 import "../Main.css";
-import addDay from '..redux/actions/addDay';
+import addDay from "../redux/actions/addDay";
+
 const Main = () => {
   const days = useSelector((state) => {
     return state.daysReducer.days;
   });
+  const [date, setNewDay] = React.useState("");
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getDays());
   }, [dispatch]);
+
+  const newDay = (e) => {
+    setNewDay(e.target.value);
+  };
+
+  const newD = () => {
+    dispatch(addDay(date));
+  };
 
   return (
     <main>
       <nav>
         {" "}
-        <button onClick={dispatch(addDay()) className="day-btn">Add Day</button>
+        <form onSubmit={newD}>
+          <label for="description"></label>
+          <input
+            onChange={newDay}
+            type="date"
+            id="start"
+            defaultValue=""
+          ></input>
+          <input type="submit" value="Submit" />
+        </form>
       </nav>
       {days.map((d) => (
         <Day key={d.id} day={d} />

@@ -14,7 +14,6 @@ const addTask = (e, description, reminder, day) => (dispatch) => {
       description: description,
       reminder: reminder,
       day_id: day.id,
-      user_id: day.tasks[0].user_id,
     }),
   })
     .then((r) => r.json())

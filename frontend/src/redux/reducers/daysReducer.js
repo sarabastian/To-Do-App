@@ -2,6 +2,7 @@ import {
   FETCH_DAYS,
   FETCH_DAYS_SUCCESS,
   FETCH_DAYS_FAILURE,
+  ADD_DAY,
 } from "../actions/actionConstants";
 
 const initialState = {
@@ -26,7 +27,11 @@ const daysReducer = (state = initialState, action) => {
       return { ...state, isLoading: false, error: action.payload };
 
     case ADD_DAY:
-      return { ...state, days: [...days, action.payload] };
+      return {
+        ...state,
+        days: [...state.days, action.payload],
+        isLoading: false,
+      };
     default:
       return state;
   }

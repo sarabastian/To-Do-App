@@ -34,6 +34,6 @@ class Api::V1::TasksController < ApplicationController
       private
     
       def task_params
-        params.permit(:description, :reminder, :day_id, :user_id)
+        params.permit(:description, :reminder, :day_id)
       end
 end

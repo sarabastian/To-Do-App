@@ -9,7 +9,7 @@ const Task = ({ task, deleted }) => {
   const deleteT = () => {
     dispatch(deleteTask(task.id));
   };
-  console.log(task.id);
+
   return deleted ? null : (
     <div className="wrapper">
       <div className="box1">

@@ -16,6 +16,7 @@ const Day = ({ day }) => {
   };
 
   const allTasks = useSelector((state) => {
+    console.log(state.tasksReducer.tasks.includes(day.id));
     return state.tasksReducer.tasks;
   });
 
@@ -39,7 +40,7 @@ const Day = ({ day }) => {
   return (
     <div className="box">
       <h1>To Do on {date}</h1>
-      {allTasks.map((t) => (
+      {day.tasks.map((t) => (
         <Task key={t.id} task={t} />
       ))}
       <button onClick={openModal} className="add-btn">
