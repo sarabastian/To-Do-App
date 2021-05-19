@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../Day.css";
 import Task from "./Task";
-import getTasks from "../redux/actions/getTasks";
+import getTasks from "../redux/actions/getDays";
 import { useSelector, useDispatch } from "react-redux";
 import addTask from "../redux/actions/addTask";
 
@@ -16,14 +16,14 @@ const Day = ({ day }) => {
   };
 
   const allTasks = useSelector((state) => {
-    console.log(state.tasksReducer.tasks.includes(day.id));
     return state.tasksReducer.tasks;
   });
-
+  console.log(allTasks);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getTasks());
-  }, []);
+  }, [dispatch]);
 
   const add = (e) => {
     dispatch(addTask(e, description, reminder, day));
@@ -36,11 +36,11 @@ const Day = ({ day }) => {
   const handleReminder = (e) => {
     setReminder(e.target.value);
   };
-
+  const tasks = allTasks.filter((t) => t.day_id == day.id);
   return (
     <div className="box">
       <h1>To Do on {date}</h1>
-      {day.tasks.map((t) => (
+      {tasks.map((t) => (
         <Task key={t.id} task={t} />
       ))}
       <button onClick={openModal} className="add-btn">
