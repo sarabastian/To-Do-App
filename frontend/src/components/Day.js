@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import addTask from "../redux/actions/addTask";
 
 const Day = ({ day }) => {
-  const date = day.date.split("-").reverse().join("-");
+  const d = day.date.split("-");
+  const date = d[1] + "-" + d[2] + "-" + d[0];
   const [open, setOpen] = React.useState(false);
   const [description, setDescription] = React.useState("");
   const [reminder, setReminder] = React.useState("");
