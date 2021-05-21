@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../Day.css";
 import Task from "./Task";
-import getTasks from "../redux/actions/getDays";
+import getTasks from "../redux/actions/getTasks";
 import { useSelector, useDispatch } from "react-redux";
 import addTask from "../redux/actions/addTask";
 
@@ -19,7 +19,7 @@ const Day = ({ day }) => {
   const allTasks = useSelector((state) => {
     return state.tasksReducer.tasks;
   });
-  console.log(allTasks);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,6 +38,7 @@ const Day = ({ day }) => {
     setReminder(e.target.value);
   };
   const tasks = allTasks.filter((t) => t.day_id == day.id);
+  console.log(allTasks);
   return (
     <div className="box">
       <h1>To Do on {date}</h1>

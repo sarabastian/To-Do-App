@@ -27,7 +27,7 @@ const Main = () => {
   };
 
   return (
-    <main>
+    <main className="Main">
       <nav>
         {" "}
         <form onSubmit={newD}>
