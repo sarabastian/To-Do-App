@@ -39,6 +39,7 @@ const Day = ({ day }) => {
   };
   const tasks = allTasks.filter((t) => t.day_id == day.id);
   console.log(allTasks);
+
   return (
     <div className="box">
       <h1>To Do on {date}</h1>

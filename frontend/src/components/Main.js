@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import getDays from "../redux/actions/getDays";
 import "../Main.css";
 import addDay from "../redux/actions/addDay";
+import Nav from "./Nav";
 
 const Main = () => {
   const days = useSelector((state) => {
@@ -28,19 +29,11 @@ const Main = () => {
 
   return (
     <main className="Main">
-      <nav>
-        {" "}
-        <form onSubmit={newD}>
-          <label for="description"></label>
-          <input
-            onChange={newDay}
-            type="date"
-            id="start"
-            defaultValue=""
-          ></input>
-          <input type="submit" value="Submit" />
-        </form>
-      </nav>
+      <form onSubmit={newD}>
+        <label for="description"></label>
+        <input onChange={newDay} type="date" id="start" defaultValue=""></input>
+        <input type="submit" value="Submit" />
+      </form>
       {days.map((d) => (
         <Day key={d.id} day={d} />
       ))}

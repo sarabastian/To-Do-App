@@ -1,5 +1,5 @@
 import React from "react";
-import "../Task.css";
+import styles from "../Task.module.css";
 import deleteTask from "../redux/actions/deleteTask";
 import { useDispatch } from "react-redux";
 
@@ -12,10 +12,10 @@ const Task = ({ task, deleted }) => {
 
   console.log(task);
   return deleted ? null : (
-    <div className="wrapper">
-      <div className="box1">
+    <div className={styles.wrapper}>
+      <div className={styles.box}>
         {task.description}
-        <button onClick={deleteT} className="btn">
+        <button onClick={deleteT} className={styles.btn}>
           <i class="fa fa-check"></i>
         </button>
       </div>
